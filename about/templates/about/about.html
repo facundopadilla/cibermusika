@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Sobre nosotros{% endblock %}
+{% block breadcrumb %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option normal-breadcrumb spad set-bg" data-setbg="{% static 'core/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h2>Sobre nosotros</h2>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html"><i class="fa fa-home"></i> Inicio</a>
+                            <span>Sobre nosotros</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+{% endblock %}
+
+{% block about %}
+    <!-- About Section Begin -->
+    <section class="about spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="about__text">
+                        <span>We Are Meeapod</span>
+                        <h2>Sobre nosotros</h2>
+                        <p>DJ's profesionales con trayectoria</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="about__item">
+                        <h6>Un artículo editable
+                        </h6>
+                        <p>Información sobre el articulo, Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero a earum, minima saepe, ex id illo nostrum, optio eligendi dignissimos sunt distinctio accusantium explicabo iste assumenda! Fugit placeat possimus rerum!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="about__item">
+                        <h6>Otro artículo
+                        </h6>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea suscipit eius labore dolorem quam amet similique laudantium quas cumque, esse, sequi quidem nihil harum mollitia vel. Reprehenderit sequi quibusdam aliquid.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="about__pic">
+                        <img src="{% static 'core/img/about-pic.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+{% endblock %}
+
+{% block cta %}
+    <!-- Call To Action Section Begin -->
+    <section class="callto spad set-bg" data-setbg="{% static 'core/img/call-about-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="callto__text">
+                        <h2>Somos DJ's profesionales</h2>
+                        <p>¿Estás interesado en nuestros servicios?, contáctanos.</p>
+                        <a href="#" class="primary-btn">Contactarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call To Action Section End -->
+{% endblock %}
+
+{% block team %}
+    <!-- Team Section Begin -->
+    <section class="team spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Nuestro equipo</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="team__item">
+                        <img src="{% static 'core/img/team/team-1.jpg' %}" alt="">
+                        <h4>Alfred Day</h4>
+                        <span>PRODUCER</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="team__item">
+                        <img src="{% static 'core/img/team/team-2.jpg' %}" alt="">
+                        <h4>Jayden White</h4>
+                        <span>Drummer</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="team__item">
+                        <img src="{% static 'core/img/team/team-3.jpg' %}" alt="">
+                        <h4>Vincent Reid</h4>
+                        <span>Enterpreneur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section End -->
+{% endblock %}
