@@ -1,0 +1,137 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+
+
+{% block hero %}
+ <!-- Hero Section Begin -->
+ <section class="hero spad set-bg" data-setbg="{% static 'core/img/hero/hero-bg.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero__text">
+                    <h5><span class="icon_calendar"></span>{{ noticiap.created|date:"d M Y" }}</h5>
+                    <h2>{{ noticiap.titulo }}</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero__pic set-bg" data-setbg="{% static 'core/img/hero/hero-video.png' %}">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ noticiap.link_youtube }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single__track">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/155590812&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div class="d-flex" style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/djgera-cibermusika" title="Dj Gera" target="_blank" style="color: #cccccc; text-decoration: none;">Dj Gera</a> · <a href="https://soundcloud.com/djgera-cibermusika/agrupacion-marilyn-la-banda-de-lechuga-el-polaco-y-nestor-en-bloque-megamix-dj-gera-cibermusika" title="Agr Marilyn - La Banda De Lechuga - El Polaco Y Nestor En Bloque - Megamix - Dj Gera Cibermusika" target="_blank" style="color: #cccccc; text-decoration: none;">Agr Marilyn - La Banda De Lechuga - El Polaco Y Nestor En Bloque - Megamix - Dj Gera Cibermusika</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+<!-- Hero Section End -->
+{% endblock %}
+
+{% block podcast %}
+<!-- Podcast Section Begin -->
+<section class="podcast spad">
+    <div class="container">
+        <div class="podcast__top">
+            <div class="row">
+                <div class="col-lg-5 col-md-5">
+                    <h2>Noticias</h2>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <ul class="filter__controls">
+                        <li class="active" data-filter="*">Todas</li>
+                        {% for categoria in categorias %}
+                        <li data-filter=".{{ categoria }}">{{ categoria }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row podcast-filter">
+            {% for noticia in noticias %}
+            <div class="col-lg-12 mix {{ noticia.categoria }}">
+                <div class="podcast__item">
+                    <div class="podcast__item__pic">
+                        <img src="{{ noticia.imagen.url }}" width="400" alt="">
+                    </div>
+                    <div class="podcast__item__text">
+                        <a href="#" class="heart-icon"><i class="fa fa-heart"></i></a>
+                        <ul>
+                            <li><span class="icon_calendar"></span> {{ noticia.created|date:"d M Y" }} </li>
+                            <li><span class="icon_profile"></span> {{ noticia.uploader }} </li>
+                            <li><span class="icon_tags_alt"></span> {{ noticia.categoria }} </li>
+                        </ul>
+                        <h4>{{ noticia.titulo }}</h4>
+                        <p>{{ noticia.descripcion }}</p>
+                        <div class="track__option">
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container-1" data-url="https://storage.cloudconvert.com/tasks/a9de0550-71d5-4945-8b1f-e6415b7cd2fa/Bella.mp3?AWSAccessKeyId=cloudconvert-production&Expires=1607727204&Signature=v34tINfgwboHEYygh5IIZLYXJRg%3D&response-content-disposition=attachment%3B%20filename%3D%22Bella.mp3%22&response-content-type=audio%2Fmpeg" type="audio/mpeg"></div>
+                            <div class="jp-audio jp_container-1" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">
+                                                            0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00
+                                        </div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><span
+                                                class="icon_volume-high"></span></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jp-btns">
+                                    <a href="{{ noticia.audio }}"><i class="fa fa-download"></i> Descargar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Podcast Section End -->
+{% endblock %}
+
+{% block cta %}
+    <!-- Call To Action Section Begin -->
+    <section class="callto spad set-bg" data-setbg="{% static 'core/img/call-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="callto__text">
+                        <h2>Somos DJ's profesionales</h2>
+                        <p>¿Estás interesado en nuestros servicios?, contáctanos.</p>
+                        <a href="https://www.{{ whatsapp }}" target="{{ whatsapp }}" class="primary-btn">Contactarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call To Action Section End -->
+{% endblock %}

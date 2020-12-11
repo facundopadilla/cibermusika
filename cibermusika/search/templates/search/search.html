@@ -1,0 +1,182 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Buscar{% endblock %}
+{% block breadcrumb %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option normal-breadcrumb spad set-bg" data-setbg="{% static 'core/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h2>Buscar MP3's</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'index' %}"><i class="fa fa-home"></i> Inicio</a>
+                            <span>Buscar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+{% endblock %}
+
+{% block podcast %}
+<!-- Podcast Section Begin -->
+<section class="podcast spad">
+    <div class="container">
+        <div class="podcast__top">
+            <div class="row">
+                <div class="col-lg-5 col-md-5">
+                    <h2>Canciones</h2>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <ul class="filter__controls">
+                        <li class="active" data-filter="*">Todas</li>
+                        {% for categoria in categorias %}
+                        <li data-filter=".{{ categoria }}">{{ categoria }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row podcast-filter">
+        {% if is_paginated %}
+        {% for cancion in todo %}
+            <div class="col-lg-12 mix {{ cancion.categoria }}">
+                <div class="podcast__item">
+                    <div class="podcast__item__pic">
+                        <img src="{{ cancion.imagen.url }}" width="400" alt="">
+                    </div>
+                    <div class="podcast__item__text">
+                        <a href="#" class="heart-icon"><i class="fa fa-heart"></i></a>
+                            <li><span class="icon_tags_alt"></span> {{ cancion.categoria }} </li>
+                        </ul>
+                        <h4>{{ cancion.titulo }}</h4>
+                        <p>{{ cancion.descripcion }}</p>
+                        <div class="track__option">
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container-{{ cancion.id }}" data-url="{{ cancion.link }}" type="audio/mpeg"></div>
+                            <div class="jp-audio jp_container-{{ cancion.id }}" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">
+                                                            0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00
+                                        </div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><span
+                                                class="icon_volume-high"></span></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jp-btns">
+                                    <a href="{{ cancion.link }}"><i class="fa fa-download"></i> Descargar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        {% if canciones %}
+            {% for cancion in canciones %}
+            <div class="col-lg-12 mix {{ cancion.categoria }}">
+                <div class="podcast__item">
+                    <div class="podcast__item__pic">
+                        <img src="{{ cancion.imagen.url }}" width="400" alt="">
+                    </div>
+                    <div class="podcast__item__text">
+                        <a href="#" class="heart-icon"><i class="fa fa-heart"></i></a>
+                            <li><span class="icon_tags_alt"></span> {{ cancion.categoria }} </li>
+                        </ul>
+                        <h4>{{ cancion.titulo }}</h4>
+                        <p>{{ cancion.descripcion }}</p>
+                        <div class="track__option">
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container-{{ cancion.id }}" data-url="{{ cancion.link }}" type="audio/mpeg"></div>
+                            <div class="jp-audio jp_container-{{ cancion.id }}" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">
+                                                            0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00
+                                        </div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><span
+                                                class="icon_volume-high"></span></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jp-btns">
+                                    <a href="{{ cancion.link }}"><i class="fa fa-download"></i> Descargar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p class="text-center">No se han encontrado resultados</p>
+        {% endif %}
+        {% endif %}
+        </div>
+{% if is_paginated %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" style="color:grey">&laquo; primera</a>
+            | <a href="?page={{ page_obj.previous_page_number }}" style="color:grey">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" style="color:grey">Siguiente </a> | 
+            <a href="?page={{ page_obj.paginator.num_pages }}" style="color:grey">anterior &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+    </div>
+</section>
+<!-- Podcast Section End -->
+{% endblock %}

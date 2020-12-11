@@ -1,0 +1,76 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Contacto{% endblock %}
+{% block breadcrumb %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option normal-breadcrumb spad set-bg" data-setbg="{% static 'core/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h2>Contacto</h2>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'index' %}"><i class="fa fa-home"></i> Inicio</a>
+                            <span>Contacto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+{% endblock %}
+
+{% block contact %}
+    <!-- Contact Section Begin -->
+    <section class="contact spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.171192047759!2d-65.41361458586103!3d-24.78959088408739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc3bb4c158465%3A0x907220f969bf7e1!2sCiber%20Musika!5e0!3m2!1ses!2sar!4v1607602882063!5m2!1ses!2sar"
+                            height="500" style="border:0;" allowfullscreen="">
+                    </iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="contact__widget__item">
+                        <img src="{% static 'core/img/icons/ci-1.png' %}" alt="">
+                        <h4>Dirección</h4>
+                        <p>{{ contacto.direccion }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="contact__widget__item">
+                        <img src="{% static 'core/img/icons/ci-2.png' %}" alt="">
+                        <h4>Teléfono</h4>
+                        <p>{{ contacto.tel }}
+                            {% if telefonos %}{% for tel in telefonos %}<span>{{ tel }}</span>{% endfor %}{% endif %}</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="contact__widget__item">
+                        <img src="{% static 'core/img/icons/ci-3.png' %}" alt="">
+                        <h4>Horario de atención</h4>
+                        <p>Abre: 10:00 a 18:00 <span>(Domingos cerrado)</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form">
+                        <h2>¿Necesitas contactarnos directamente?</h2>
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <a href="https://www.{{ whatsapp }}" class="primary-btn">Enviar un WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+{% endblock %}
